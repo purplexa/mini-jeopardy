@@ -1,3 +1,5 @@
+from typing import List
+
 # TODO: add docstrings
 # TODO: implement
 
@@ -6,22 +8,22 @@ class JService:
     def __init__(self, endpoint):
         pass
 
-    def clues(self, value, category, min_date, max_date):
+    def clues(self, value, category, min_date, max_date) -> List[Clue]:
         pass
 
-    def random(self, count):
+    def random(self, count) -> Clue:
         pass
 
-    def categories(self, count):
+    def categories(self, count) -> List[Category]:
         pass
 
-    def category(self, id):
+    def category(self, id) -> Category:
         pass
 
-    def find_category_by_title(self, title):
+    def find_category_by_title(self, title) -> Category:
         pass
 
-    def get_n_clues(self, n, final_jeopardy, **filters):
+    def get_n_clues(self, n, final_jeopardy, **filters) -> List[Clue]:
         pass
 
 
@@ -32,7 +34,7 @@ class Category:
         self.title = title
         self.clues_count = clues_count
 
-    def get_clues(self, jservice):
+    def get_clues(self, jservice) -> List[Clue]:
         pass
 
 
@@ -49,7 +51,7 @@ class Clue:
         self.invalid_count = kwargs['invalid_count']
         self.category = kwargs['category']
 
-    def is_final_jeopardy(self):
+    def is_final_jeopardy(self) -> bool:
         self.value == None
 
     
