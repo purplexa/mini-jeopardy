@@ -20,12 +20,13 @@ class Clue:
 
     @classmethod
     def from_response(cls, decoded_json):
-        decoded_json['cid'] = decoded_json.pop('id', None)
-        decoded_json['category'] = Category.from_response(decoded_json['category'])
-        return cls(**decoded_json)
+        decoded_json_copy = decoded_json.copy()
+        decoded_json_copy['cid'] = decoded_json_copy.pop('id', None)
+        decoded_json_copy['category'] = Category.from_response(decoded_json_copy['category'])
+        return cls(**decoded_json_copy)
 
     def is_final_jeopardy(self) -> bool:
-        self.value == None
+        return self.value == None
 
 
 class Category:
@@ -37,9 +38,10 @@ class Category:
 
     @classmethod
     def from_response(cls, decoded_json):
-        decoded_json['cid'] = decoded_json.pop('id', None)
-        decoded_json = { k: v for k, v in decoded_json.items() if k in ['cid', 'title', 'clues_count']}
-        return cls(**decoded_json)
+        decoded_json_copy = decoded_json.copy()
+        decoded_json_copy['cid'] = decoded_json_copy.pop('id', None)
+        decoded_json_copy = { k: v for k, v in decoded_json_copy.items() if k in ['cid', 'title', 'clues_count']}
+        return cls(**decoded_json_copy)
 
     def get_clues(self, jservice) -> List[Clue]:
         pass

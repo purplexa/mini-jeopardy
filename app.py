@@ -16,4 +16,5 @@ def run():
         print('Point Value: {:>4d}'.format(clue.value))
         print('Question: {}\n'.format(clue.question))
 
-run()
+if __name__ == '__main__':
+    run()
